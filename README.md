@@ -1,4 +1,3 @@
-```markdown
 # Music Store Data Analysis Project
 =====================================
 

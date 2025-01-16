@@ -191,6 +191,7 @@ WITH Customer_with_country AS (
 SELECT * FROM Customer_with_country WHERE RowNo <= 1;
 ```
 * This query returns the top spending customer for each country, offering insights into customer value on a geographical basis.
+  
 
 ## Conclusion
 

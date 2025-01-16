@@ -195,4 +195,3 @@ SELECT * FROM Customer_with_country WHERE RowNo <= 1;
 ## Conclusion
 
 The SQL queries implemented in this project provide a foundational analysis of the music store's dataset, allowing stakeholders to understand the dynamics of sales, customer behavior, and market trends. This comprehensive analysis can guide future promotional activities, inventory decisions, and customer engagement strategies, ultimately leading to greater profitability and customer satisfaction.
-```

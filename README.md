@@ -1,5 +1,4 @@
-# Music Store Data Analysis Project
-=====================================
+# SQL-Music-Store-Analysis-Project
 
 ## Project Overview
 
@@ -45,7 +44,7 @@ This project consists of three main question sets categorized by difficulty (Eas
 
 ### Question Set 1: Easy
 
-#### q1. Who is the senior most employee based on job title?
+#### Q1. Who is the senior most employee based on job title?
 ```sql
 SELECT title, last_name, first_name 
 FROM employee
@@ -54,7 +53,7 @@ LIMIT 1;
 ```
 * This query retrieves the title and names of the employee who holds the highest position in the hierarchy based on job title levels.
 
-#### q2. Which countries have the most Invoices?
+#### Q2. Which countries have the most Invoices?
 ```sql
 SELECT COUNT(*) AS c, billing_country 
 FROM invoice
@@ -63,7 +62,7 @@ ORDER BY c DESC;
 ```
 * This query counts all invoices per country to identify where the highest number of transactions are generated.
 
-#### q3. What are top 3 values of total invoice?
+#### Q3. What are top 3 values of total invoice?
 ```sql
 SELECT total 
 FROM invoice
@@ -72,7 +71,7 @@ LIMIT 3;
 ```
 * This retrieves the three highest invoice totals, allowing insights into the largest sales transactions.
 
-#### q4. Which city has the best customers?
+#### Q4. Which city has the best customers?
 ```sql
 SELECT billing_city, SUM(total) AS InvoiceTotal
 FROM invoice
@@ -82,7 +81,7 @@ LIMIT 1;
 ```
 * This query identifies the city that has generated the most revenue based on invoice totals, which can help in deciding locations for promotional events.
 
-#### q5. Who is the best customer?
+#### Q5. Who is the best customer?
 ```sql
 SELECT customer.customer_id, first_name, last_name, SUM(total) AS total_spending
 FROM customer
@@ -95,7 +94,7 @@ LIMIT 1;
 
 ### Question Set 2: Moderate
 
-#### q6. Email and Genre of Rock Music listeners
+#### Q6. Email and Genre of Rock Music listeners
 ```sql
 SELECT DISTINCT email, first_name, last_name
 FROM customer
@@ -110,7 +109,7 @@ ORDER BY email;
 ```
 * This query retrieves the details of customers who have purchased rock music, providing insight into the demographics of rock listeners.
 
-#### q7. Top 10 Rock Bands based on number of tracks
+#### Q7. Top 10 Rock Bands based on number of tracks
 ```sql
 SELECT artist.artist_id, artist.name, COUNT(artist.artist_id) AS number_of_songs
 FROM track
@@ -124,7 +123,7 @@ LIMIT 10;
 ```
 * This query identifies the rock artists who have produced the most tracks in the dataset, allowing for targeted promotions to fans of these artists.
 
-#### q8. Tracks longer than average song length
+#### Q8. Tracks longer than average song length
 ```sql
 SELECT name, milliseconds
 FROM track
@@ -138,7 +137,7 @@ ORDER BY milliseconds DESC;
 
 ### Question Set 3: Advanced
 
-#### q9. Amount spent by each customer on artists
+#### Q9. Amount spent by each customer on artists
 ```sql
 WITH best_selling_artist AS (
     SELECT artist.artist_id AS artist_id, artist.name AS artist_name, SUM(invoice_line.unit_price*invoice_line.quantity) AS total_sales
@@ -162,7 +161,7 @@ ORDER BY 5 DESC;
 ```
 * This query calculates how much each customer has spent on the best-selling artist, allowing targeted marketing towards high-spending customers.
 
-#### q10. Most popular music genre by country
+#### Q10. Most popular music genre by country
 ```sql
 WITH popular_genre AS (
     SELECT COUNT(invoice_line.quantity) AS purchases, customer.country, genre.name, genre.genre_id,
@@ -179,7 +178,7 @@ SELECT * FROM popular_genre WHERE RowNo <= 1;
 ```
 * This query identifies the most popular music genre for each country, providing insights on market preferences globally.
 
-#### q11. Top customer spending per country
+#### Q11. Top customer spending per country
 ```sql
 WITH Customer_with_country AS (
     SELECT customer.customer_id, first_name, last_name, billing_country, SUM(total) AS total_spending,
